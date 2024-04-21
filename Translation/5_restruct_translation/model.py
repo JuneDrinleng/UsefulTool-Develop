@@ -55,7 +55,8 @@ class MainWindow(FramelessWindow):
         # 始化导航界面，添加子界面到导航界面和堆栈窗口部件中
         # enable acrylic effect
         self.navigationInterface.setAcrylicEnabled(True)
-        resource_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resource')
+        file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+        resource_path=os.path.join(file_path, 'resource')
         icon_path=os.path.join(resource_path, 'icon')
 
         tran_ico=os.path.join(icon_path, 'translation.svg')
@@ -104,7 +105,8 @@ class MainWindow(FramelessWindow):
 
     def setQss(self):
         #设置窗口的样式表
-        resource_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resource')
+        file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+        resource_path=os.path.join(file_path, 'resource')
         demo_path =os.path.join(os.path.join(resource_path, 'qss'),'demo.qss')
         with open(demo_path, encoding='utf-8') as f:
             self.setStyleSheet(f.read())

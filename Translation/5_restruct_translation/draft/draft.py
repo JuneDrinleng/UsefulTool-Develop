@@ -6,7 +6,7 @@ current_script_path = os.path.abspath(__file__)
 # 提取脚本所在文件夹路径
 script_dir_path = os.path.dirname(current_script_path)
 res=os.path.join(script_dir_path, 'ressource')
-print(res)
+# print(res)
 
 # import re
 # import html
@@ -32,4 +32,17 @@ print(res)
 # print(translate("你吃饭了么？", "ja","zh-CN")) #汉语转日语
 # print(translate("about your situation", "zh-CN","en")) #英语转汉语
 
-Google_web='https://translate.google.com/'
+# Google_web='https://translate.google.com/'
+
+import sys  
+import os  
+   
+def app_path():  
+    """Returns the base application path."""  
+    if hasattr(sys, 'frozen'):  
+        # Handles PyInstaller  
+        return os.path.dirname(sys.executable)  #使用pyinstaller打包后的exe目录  
+    return os.path.dirname(__file__)                 #没打包前的py目录
+
+print(os.path.join(app_path(),'resource'))
+

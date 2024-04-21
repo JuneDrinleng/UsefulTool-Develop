@@ -56,7 +56,8 @@ class TranslationWindow(QFrame):
         output_layout.addWidget(self.output_text_browser)
 
         main_layout.addWidget(output_group_box)
-        resource_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resource')
+        file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+        resource_path=os.path.join(file_path, 'resource')
         transqss_path=os.path.join(os.path.join(resource_path, 'qss'),'translation.qss')
         with open(transqss_path, encoding='utf-8') as f:
             self.setStyleSheet(f.read())
