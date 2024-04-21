@@ -7,14 +7,28 @@ import sys
 import re
 import html
 from urllib import parse
+import platform
 
 
 # 百度翻译
 def make_md5(s, encoding='utf-8'):
     return md5(s.encode(encoding)).hexdigest()
 def Baidu_translator(input_text,from_lang='zh',to_lang='en'):
-    config_path=os.path.join(sys.argv[0],'..//config.json')
-    with open(config_path,'r') as f:
+    system = platform.system()
+
+    if system == 'Darwin':  # macOS
+        cache_dir = os.path.expanduser('~/Library/Caches/Translate Helper/')
+    elif system == 'Windows':
+        cache_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'Translate Helper', 'Cache')
+    else:
+        raise ValueError(f'Unsupported operating system: {system}')
+
+    # 确保缓存目录存在
+    os.makedirs(cache_dir, exist_ok=True)
+
+    # 定义缓存文件名和路径
+    cache_file_path = os.path.join(cache_dir, 'settings_cache.json')
+    with open(cache_file_path,'r') as f:
         api_info=json.load(f)
         appid=api_info['appid']
         appkey=api_info['appkey']
@@ -35,8 +49,11 @@ def Baidu_translator(input_text,from_lang='zh',to_lang='en'):
 
     # Send request
     r = requests.post(url, params=payload, headers=headers)
-    result = r.json()['trans_result'][0]['dst']
-    return result
+    try:
+        result = r.json()['trans_result'][0]['dst']
+        return result
+    except KeyError as e:
+            return f"错误原因：{e} \n 出错密码不准确活或填写账户密码，请检查api账户和密码"
 
 
 
