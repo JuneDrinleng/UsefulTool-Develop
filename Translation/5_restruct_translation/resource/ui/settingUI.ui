@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Frame</class>
+ <widget class="QFrame" name="Frame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <widget class="SwitchButton" name="SwitchButton">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>130</y>
+     <width>76</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+    background-color: white;
+}
+
+SwitchButton {
+    qproperty-spacing: 12;
+    background-color: transparent;
+}
+
+SwitchButton&gt;QLabel {
+    color: black;
+    font: 14px '华文中宋','Microsoft YaHei', '微软雅黑','PingFang SC', 'sans-serif'；
+    background-color: transparent;
+    border: none;
+}
+
+SwitchButton&gt;QLabel:disabled {
+    color: rgba(0, 0, 0, 0.36);
+}
+
+</string>
+   </property>
+  </widget>
+  <widget class="CaptionLabel" name="CaptionLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>40</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;👀设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="SubtitleLabel" name="SubtitleLabel">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>120</y>
+     <width>120</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>窗口锁定</string>
+   </property>
+  </widget>
+  <widget class="SubtitleLabel" name="SubtitleLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>200</y>
+     <width>120</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>API账户</string>
+   </property>
+  </widget>
+  <widget class="SubtitleLabel" name="SubtitleLabel_3">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>260</y>
+     <width>120</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>API密钥</string>
+   </property>
+  </widget>
+  <widget class="PasswordLineEdit" name="PasswordLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>260</y>
+     <width>158</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="PasswordLineEdit" name="PasswordLineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>200</y>
+     <width>158</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SwitchButton</class>
+   <extends>QWidget</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>CaptionLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>SubtitleLabel</class>
+   <extends>QLabel</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PasswordLineEdit</class>
+   <extends>LineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

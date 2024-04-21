@@ -1,49 +1,18 @@
-from typing import List, Union
-from PyQt5 import QtCore
-from PyQt5.QtCore import QSize, Qt, QRectF, pyqtSignal, QPoint, QTimer, QEvent, QAbstractItemModel, pyqtProperty
-from qfluentwidgets import LineEdit,LineEditButton,PlainTextEdit
-from qfluentwidgets import FluentIcon as FIF
 import requests
 import random
 import json
 from hashlib import md5
 import os
 import sys
+import re
+import html
+from urllib import parse
 
-# 用来使得搜索框按下回车可以搜索
-class mySearchLineEdit(LineEdit):
-    """ Search line edit """
-
-    searchSignal = pyqtSignal(str)
-    clearSignal = pyqtSignal()
-
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.searchButton = LineEditButton(FIF.SEARCH, self)
-
-        self.hBoxLayout.addWidget(self.searchButton, 0, Qt.AlignRight)
-        self.setClearButtonEnabled(True)
-        self.setTextMargins(0, 0, 59, 0)
-
-        self.searchButton.clicked.connect(self.search)
-        self.clearButton.clicked.connect(self.clearSignal)
-        self.returnPressed.connect(self.search)
-    def search(self):
-        """ emit search signal """
-        text = self.text().strip()
-        if text:
-            self.searchSignal.emit(text)
-        else:
-            self.clearSignal.emit()
-
-    def setClearButtonEnabled(self, enable: bool):
-        self._isClearButtonEnabled = enable
-        self.setTextMargins(0, 0, 28*enable+30, 0)
 
 # 百度翻译
 def make_md5(s, encoding='utf-8'):
     return md5(s.encode(encoding)).hexdigest()
-def baidu_translator(input_text,from_lang='zh',to_lang='en'):
+def Baidu_translator(input_text,from_lang='zh',to_lang='en'):
     config_path=os.path.join(sys.argv[0],'..//config.json')
     with open(config_path,'r') as f:
         api_info=json.load(f)
@@ -68,3 +37,23 @@ def baidu_translator(input_text,from_lang='zh',to_lang='en'):
     r = requests.post(url, params=payload, headers=headers)
     result = r.json()['trans_result'][0]['dst']
     return result
+
+
+
+# 谷歌翻译
+def Google_translator(text, to_language="auto", text_language="auto"):
+    GOOGLE_TRANSLATE_URL = 'http://translate.google.com/m?q=%s&tl=%s&sl=%s'
+    text = parse.quote(text)
+    url = GOOGLE_TRANSLATE_URL % (text,to_language,text_language)
+    response = requests.get(url)
+    data = response.text
+    expr = r'(?s)class="(?:t0|result-container)">(.*?)<'
+    result = re.findall(expr, data)
+    if (len(result) == 0):
+        return ""
+
+    return html.unescape(result[0])
+
+# print(Googletranslate("你吃饭了么?", "en","zh-CN")) #汉语转英语
+# print(Googletranslate("你吃饭了么？", "ja","zh-CN")) #汉语转日语
+# print(Googletranslate("about your situation", "zh-CN","en")) #英语转汉语
