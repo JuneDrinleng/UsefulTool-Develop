@@ -75,7 +75,7 @@ class MainWindow(FramelessWindow):
     def initWindow(self):
         # 设置窗口的大小、标题、图标等属性，并将窗口移动到屏幕中心
         self.resize(self.window_width, self.window_height)
-        resource_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resource')
+        resource_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\resource'
         logo_path=os.path.join(resource_path, 'logo.ico')
         self.setWindowIcon(QIcon(logo_path))
         self.setWindowTitle('Translation Helper')
