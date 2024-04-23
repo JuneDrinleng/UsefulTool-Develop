@@ -13,7 +13,7 @@ import platform
 # 百度翻译
 def make_md5(s, encoding='utf-8'):
     return md5(s.encode(encoding)).hexdigest()
-def Baidu_translator(input_text,from_lang='zh',to_lang='en'):
+def Baidu_translator(input_text,from_lang,to_lang):
     system = platform.system()
 
     if system == 'Darwin':  # macOS
@@ -58,7 +58,7 @@ def Baidu_translator(input_text,from_lang='zh',to_lang='en'):
 
 
 # 谷歌翻译
-def Google_translator(text, to_language="auto", text_language="auto"):
+def Google_translator(text, to_language, text_language):
     GOOGLE_TRANSLATE_URL = 'http://translate.google.com/m?q=%s&tl=%s&sl=%s'
     text = parse.quote(text)
     url = GOOGLE_TRANSLATE_URL % (text,to_language,text_language)

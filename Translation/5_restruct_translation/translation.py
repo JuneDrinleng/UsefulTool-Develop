@@ -95,7 +95,12 @@ class TranslationWindow(QFrame):
             config_info=json.load(file)
             self.translate_sever=config_info['supplier']
         self.setLayout(main_layout)
+        self.comboBox.currentTextChanged.connect(self.get_language)
+        self.comboBox2.currentTextChanged.connect(self.get_language)
+
+    def get_language(self):
         self.text_language=self.comboBox.currentText()
+        self.target_language=self.comboBox2.currentText()
         if self.text_language=='自动识别':
             self.text_language='auto'
         elif self.text_language=='英语':
@@ -104,7 +109,6 @@ class TranslationWindow(QFrame):
             self.text_language='zh-CN'
         elif self.text_language=='汉语' and self.translate_sever=='百度翻译':
             self.text_language='zh'
-        self.target_language=self.comboBox2.currentText()
         if self.target_language=='英语':
             self.target_language='en'
         elif self.target_language=='汉语' and self.translate_sever=='谷歌翻译':
@@ -154,7 +158,7 @@ class TranslationWindow(QFrame):
                 # self.output_text_browser.setText(Google_translator(text=text,text_language='zh-CN'))
                 self.output_text_browser.setText(Google_translator(text=text,text_language=self.text_language,to_language=self.target_language))
         elif self.translate_sever=='百度翻译':
-            self.output_text_browser.setText(Baidu_translator(input_text=text))
+            self.output_text_browser.setText(Baidu_translator(input_text=text,from_lang=self.text_language,to_lang=self.target_language))
 
 
 class myPlainTextEdit(PlainTextEdit):
