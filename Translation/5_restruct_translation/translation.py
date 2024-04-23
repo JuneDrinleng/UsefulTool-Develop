@@ -1,8 +1,9 @@
 from PyQt5.QtCore import QEvent,Qt,pyqtSignal
 from PyQt5.QtWidgets import QFrame, QLabel,QVBoxLayout,QTextBrowser,QGroupBox
 from mymodel import *
-from qfluentwidgets import PlainTextEdit,TextEdit
+from qfluentwidgets import PlainTextEdit,TextEdit,ComboBox
 import platform
+from PyQt5 import QtCore
 
 class TranslationWindow(QFrame):
     def __init__(self, parent=None):
@@ -55,6 +56,19 @@ class TranslationWindow(QFrame):
         self.output_text_browser = QTextBrowser(output_group_box)
         output_layout.addWidget(self.output_text_browser)
 
+        self.comboBox=ComboBox(input_group_box)
+        Translation_service_suppliers=['自动识别','英语','汉语']
+        self.comboBox.setGeometry(220, 23, 100, 30)
+        self.comboBox.addItems(Translation_service_suppliers)
+        self.comboBox.setObjectName("comboBox_language")
+
+        self.comboBox2=ComboBox(output_group_box)
+        Translation_service_suppliers=['英语','汉语']
+        self.comboBox2.setGeometry(220, 23, 100, 30)
+        self.comboBox2.addItems(Translation_service_suppliers)
+        self.comboBox2.setObjectName("comboBox_language_output")
+
+
         main_layout.addWidget(output_group_box)
         file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
         resource_path=os.path.join(file_path, 'resource')
@@ -63,6 +77,18 @@ class TranslationWindow(QFrame):
             self.setStyleSheet(f.read())
 
         self.setLayout(main_layout)
+        self.text_language=self.comboBox.currentText()
+        if self.text_language=='自动识别':
+            self.text_language='auto'
+        elif self.text_language=='英语':
+            self.text_language='en'
+        elif self.text_language=='汉语':
+            self.text_language='zh-CN'
+        self.target_language=self.comboBox2.currentText()
+        if self.target_language=='英语':
+            self.target_language='en'
+        elif self.target_language=='汉语':
+            self.target_language='zh-CN'
 
     def eventFilter(self, obj, event):
         if obj == self.label_title and event.type() == QEvent.Resize:
@@ -99,10 +125,12 @@ class TranslationWindow(QFrame):
             config_info=json.load(file)
             translate_sever=config_info['supplier']
         if translate_sever=='谷歌翻译':
+                
             if text==' ':
                 self.output_text_browser.setText('')
             else:
-                self.output_text_browser.setText(Google_translator(text=text,text_language='zh-CN'))
+                # self.output_text_browser.setText(Google_translator(text=text,text_language='zh-CN'))
+                self.output_text_browser.setText(Google_translator(text=text,text_language=self.text_language,to_language=self.target_language))
         elif translate_sever=='百度翻译':
             self.output_text_browser.setText(Baidu_translator(input_text=text))
 
