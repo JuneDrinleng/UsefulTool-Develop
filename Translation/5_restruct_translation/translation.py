@@ -76,19 +76,41 @@ class TranslationWindow(QFrame):
         with open(transqss_path, encoding='utf-8') as f:
             self.setStyleSheet(f.read())
 
+
+        system = platform.system()
+
+        if system == 'Darwin':  # macOS
+            cache_dir = os.path.expanduser('~/Library/Caches/Translate Helper/')
+        elif system == 'Windows':
+            cache_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'Translate Helper', 'Cache')
+        else:
+            raise ValueError(f'Unsupported operating system: {system}')
+
+        # 确保缓存目录存在
+        os.makedirs(cache_dir, exist_ok=True)
+
+        # 定义缓存文件名和路径
+        cache_file_path = os.path.join(cache_dir, 'settings_cache.json')
+        with open(cache_file_path, 'r', encoding='utf-8') as file:
+            config_info=json.load(file)
+            self.translate_sever=config_info['supplier']
         self.setLayout(main_layout)
         self.text_language=self.comboBox.currentText()
         if self.text_language=='自动识别':
             self.text_language='auto'
         elif self.text_language=='英语':
             self.text_language='en'
-        elif self.text_language=='汉语':
+        elif self.text_language=='汉语' and self.translate_sever=='谷歌翻译':
             self.text_language='zh-CN'
+        elif self.text_language=='汉语' and self.translate_sever=='百度翻译':
+            self.text_language='zh'
         self.target_language=self.comboBox2.currentText()
         if self.target_language=='英语':
             self.target_language='en'
-        elif self.target_language=='汉语':
+        elif self.target_language=='汉语' and self.translate_sever=='谷歌翻译':
             self.target_language='zh-CN'
+        elif self.target_language=='汉语' and self.translate_sever=='百度翻译':
+            self.target_language='zh'
 
     def eventFilter(self, obj, event):
         if obj == self.label_title and event.type() == QEvent.Resize:
@@ -107,31 +129,31 @@ class TranslationWindow(QFrame):
         self.label_title.setContentsMargins(left_margin, top_margin, 0, 0)
     
     def output_text(self,text):
-        system = platform.system()
+        # system = platform.system()
 
-        if system == 'Darwin':  # macOS
-            cache_dir = os.path.expanduser('~/Library/Caches/Translate Helper/')
-        elif system == 'Windows':
-            cache_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'Translate Helper', 'Cache')
-        else:
-            raise ValueError(f'Unsupported operating system: {system}')
+        # if system == 'Darwin':  # macOS
+        #     cache_dir = os.path.expanduser('~/Library/Caches/Translate Helper/')
+        # elif system == 'Windows':
+        #     cache_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'Translate Helper', 'Cache')
+        # else:
+        #     raise ValueError(f'Unsupported operating system: {system}')
 
-        # 确保缓存目录存在
-        os.makedirs(cache_dir, exist_ok=True)
+        # # 确保缓存目录存在
+        # os.makedirs(cache_dir, exist_ok=True)
 
-        # 定义缓存文件名和路径
-        cache_file_path = os.path.join(cache_dir, 'settings_cache.json')
-        with open(cache_file_path, 'r', encoding='utf-8') as file:
-            config_info=json.load(file)
-            translate_sever=config_info['supplier']
-        if translate_sever=='谷歌翻译':
+        # # 定义缓存文件名和路径
+        # cache_file_path = os.path.join(cache_dir, 'settings_cache.json')
+        # with open(cache_file_path, 'r', encoding='utf-8') as file:
+        #     config_info=json.load(file)
+        #     translate_sever=config_info['supplier']
+        if self.translate_sever=='谷歌翻译':
                 
             if text==' ':
                 self.output_text_browser.setText('')
             else:
                 # self.output_text_browser.setText(Google_translator(text=text,text_language='zh-CN'))
                 self.output_text_browser.setText(Google_translator(text=text,text_language=self.text_language,to_language=self.target_language))
-        elif translate_sever=='百度翻译':
+        elif self.translate_sever=='百度翻译':
             self.output_text_browser.setText(Baidu_translator(input_text=text))
 
 
