@@ -95,12 +95,13 @@ class TranslationWindow(QFrame):
             config_info=json.load(file)
             self.translate_sever=config_info['supplier']
         self.setLayout(main_layout)
-        self.comboBox.currentTextChanged.connect(self.get_language)
-        self.comboBox2.currentTextChanged.connect(self.get_language)
-
-    def get_language(self):
+        self.comboBox.currentTextChanged.connect(self.get_text_language)
+        self.comboBox2.currentTextChanged.connect(self.get_target_language)
+        self.text_language='auto'
+        self.target_language='en'
+    def get_text_language(self):
         self.text_language=self.comboBox.currentText()
-        self.target_language=self.comboBox2.currentText()
+        
         if self.text_language=='自动识别':
             self.text_language='auto'
         elif self.text_language=='英语':
@@ -109,6 +110,8 @@ class TranslationWindow(QFrame):
             self.text_language='zh-CN'
         elif self.text_language=='汉语' and self.translate_sever=='百度翻译':
             self.text_language='zh'
+    def get_target_language(self):
+        self.target_language=self.comboBox2.currentText()
         if self.target_language=='英语':
             self.target_language='en'
         elif self.target_language=='汉语' and self.translate_sever=='谷歌翻译':
