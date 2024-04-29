@@ -19,6 +19,8 @@ Windows 打包命令：
 pyinstaller -w --add-data "./resource/*:." -i "./resource/logo.ico" -n "Translate Helper" --onefile main.py 
 mac 打包命令
 pyinstaller -w --add-data "./resource/*:." -i "./resource/logo.icns" -n "Translate Helper" --onefile main.py 
+pyinstaller -w --add-data "./resource/*:." -i "./resource/logo.icns" -n "Translate Helper"  main.py 
+mac端加上onefile命令会出现闪退的问题
 
 ## 2 项目介绍
 
