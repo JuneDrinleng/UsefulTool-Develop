@@ -8,6 +8,9 @@ import re
 import html
 from urllib import parse
 import platform
+import time
+import hashlib
+from PyDeepLX import PyDeepLX
 
 
 # 百度翻译
@@ -74,3 +77,46 @@ def Google_translator(text, to_language, text_language):
 # print(Googletranslate("你吃饭了么?", "en","zh-CN")) #汉语转英语
 # print(Googletranslate("你吃饭了么？", "ja","zh-CN")) #汉语转日语
 # print(Googletranslate("about your situation", "zh-CN","en")) #英语转汉语
+
+def advanced_test_url(url):
+    try:
+        response = requests.get(url, timeout=3)  # 设置请求超时时间为5秒
+        response.raise_for_status()  # 如果状态码不是200，将抛出HTTPError异常
+        return '1'
+    except:
+        return '0'
+    
+def youdao_translator(content,to_language,text_language):
+    salt = str(round(time.time() * 1000)) + str(random.randint(0, 9))
+    data = "fanyideskweb" + content + salt + "Tbh5E8=q6U3EXe+&L[4c@"
+    sign = hashlib.md5()
+    sign.update(data.encode("utf-8"))
+    sign = sign.hexdigest()
+
+    url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
+    headers = {
+        'Cookie': 'OUTFOX_SEARCH_USER_ID=-1927650476@223.97.13.65;',
+        'Host': 'fanyi.youdao.com',
+        'Origin': 'http://fanyi.youdao.com',
+        'Referer': 'http://fanyi.youdao.com/',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36',
+    }
+    data = {
+        'i': str(content),
+        'from': text_language,
+        'to': to_language,
+        'smartresult': 'dict',
+        'client': 'fanyideskweb',
+        'salt': str(salt),
+        'sign': str(sign),
+        'version': '2.1',
+        'keyfrom': 'fanyi.web',
+        'action': 'FY_BY_REALTlME',
+    }
+
+    res = requests.post(url=url, headers=headers, data=data).json()
+    return res['translateResult'][0][0]['tgt']
+
+def deepL_translator(content,to_language,text_language):
+    result=PyDeepLX.translate(content, text_language, to_language)
+    return result

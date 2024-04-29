@@ -39,7 +39,7 @@ class SettingWindow(QFrame):
         self.PasswordLineEdit_2.setGeometry(QtCore.QRect(180, 200, 158, 33))
         self.PasswordLineEdit_2.setObjectName("PasswordLineEdit_2")
         self.comboBox=ComboBox(self)
-        Translation_service_suppliers=['未选择','谷歌翻译','百度翻译']
+        Translation_service_suppliers=['未选择','谷歌翻译','百度翻译','有道翻译','deepl翻译']
         self.comboBox.addItems(Translation_service_suppliers)
         self.comboBox.setGeometry(QtCore.QRect(180, 350, 158, 33))
         self.comboBox.setObjectName("comboBox")
