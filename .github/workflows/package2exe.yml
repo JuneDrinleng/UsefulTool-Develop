@@ -32,6 +32,7 @@ jobs:
     - name: Build with PyInstaller
       run: |
         cd ..
+        cd ..
         cd ./Translation/5_restruct_translation
         pyinstaller -w --add-data "./resource/*;." -i "./resource/logo.ico" -n "Translate Helper" --onefile main.py
 
