@@ -33,8 +33,8 @@ jobs:
         cd ./Translation/5_restruct_translation
         pyinstaller -w --add-data "./resource/*;." -i "./resource/logo.ico" -n "Translate Helper" --onefile main.py
 
-    # - name: Upload Artifacts
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: translate-helper
-    #     path: dist/
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Translate Helper.exe
+        path: dist/
