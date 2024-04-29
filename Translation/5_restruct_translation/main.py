@@ -8,8 +8,8 @@ from PyQt5.QtCore import Qt
 #     # 如果程序不是被打包的，使用以下路径：
 #     file_path = os.path.dirname(os.path.abspath(__file__))
 
-# file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
-file_path='D:\\a\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+# file_path='D:\\a\\UsefulTool-Develop\\Translation\\5_restruct_translation'
 # file_path=os.path.dirname(os.path.abspath(__file__))
 def main():
     system = platform.system()
