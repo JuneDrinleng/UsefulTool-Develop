@@ -34,7 +34,7 @@ jobs:
     - name: Build with PyInstaller
       run: |
         cd ./Translation/5_restruct_translation
-        pyinstaller -w --add-data "./resource/*:." -i "./resource/logo.icns" -n "Translate Helper" --onefile main.py
+        pyinstaller -w --add-data "./resource/*:." -i "./resource/logo.icns" -n "Translate Helper" --onedir main.py
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
