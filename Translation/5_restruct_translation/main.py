@@ -9,7 +9,7 @@ from PyQt5.QtCore import Qt
 #     file_path = os.path.dirname(os.path.abspath(__file__))
 
 # file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
-file_path='D:\\a\\UsefulTool-Develop\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+file_path='D:\\a\\UsefulTool-Develop\\Translation\\5_restruct_translation'
 # file_path=os.path.dirname(os.path.abspath(__file__))
 def main():
     system = platform.system()
