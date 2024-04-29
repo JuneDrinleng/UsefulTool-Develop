@@ -1,4 +1,4 @@
-('D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\build\\Translate '
+('d:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\build\\Translate '
  'Helper\\PYZ-00.pyz',
  [('PIL',
    'd:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\.venv\\Lib\\site-packages\\PIL\\__init__.py',
@@ -1190,7 +1190,7 @@
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\mimetypes.py',
    'PYMODULE'),
   ('model',
-   'D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\model.py',
+   'd:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\model.py',
    'PYMODULE'),
   ('multiprocessing',
    'C:\\Program '
@@ -1285,7 +1285,7 @@
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\util.py',
    'PYMODULE'),
   ('mymodel',
-   'D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\mymodel.py',
+   'd:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\mymodel.py',
    'PYMODULE'),
   ('netrc',
    'C:\\Program '
@@ -3421,7 +3421,7 @@
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\selectors.py',
    'PYMODULE'),
   ('setting',
-   'D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\setting.py',
+   'd:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\setting.py',
    'PYMODULE'),
   ('shlex',
    'C:\\Program '
@@ -3526,7 +3526,7 @@
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tracemalloc.py',
    'PYMODULE'),
   ('translation',
-   'D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\translation.py',
+   'd:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\translation.py',
    'PYMODULE'),
   ('tty',
    'C:\\Program '

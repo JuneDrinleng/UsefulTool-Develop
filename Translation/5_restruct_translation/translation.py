@@ -6,7 +6,7 @@ import platform
 from PyQt5 import QtCore
 
 class TranslationWindow(QFrame):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None,file_path=None):
         super().__init__(parent)
         self.window_height=parent.window_height
         self.window_width=parent.window_width
@@ -68,10 +68,10 @@ class TranslationWindow(QFrame):
         self.comboBox2.addItems(Translation_service_suppliers)
         self.comboBox2.setObjectName("comboBox_language_output")
 
-
+        self.file_path=file_path
         main_layout.addWidget(output_group_box)
-        file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
-        resource_path=os.path.join(file_path, 'resource')
+        # file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+        resource_path=os.path.join(self.file_path, 'resource')
         transqss_path=os.path.join(os.path.join(resource_path, 'qss'),'translation.qss')
         with open(transqss_path, encoding='utf-8') as f:
             self.setStyleSheet(f.read())

@@ -11,10 +11,10 @@ from PyQt5.QtWidgets import QApplication,  QStackedWidget, QHBoxLayout
 
 class MainWindow(FramelessWindow):
 
-    def __init__(self):
+    def __init__(self,file_path):
         super().__init__()
         self.setTitleBar(StandardTitleBar(self))
-
+        self.file_path=file_path
         self.window_height=500
         self.window_width=400
         self.setFixedSize(self.window_width,self.window_height)
@@ -24,9 +24,10 @@ class MainWindow(FramelessWindow):
 
         # create sub interface
         # self.translateInterfaceTiTle = Widget('🔠翻译', self)
-        self.translateInterface = TranslationWindow(parent=self)
+        self.translateInterface = TranslationWindow(parent=self,file_path=self.file_path)
         self.settingInterface = SettingWindow(parent=self)
         self.settingInterface.set_main_window(self)
+        
         # initialize layout
         self.initLayout()
 
@@ -55,8 +56,8 @@ class MainWindow(FramelessWindow):
         # 始化导航界面，添加子界面到导航界面和堆栈窗口部件中
         # enable acrylic effect
         self.navigationInterface.setAcrylicEnabled(True)
-        file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
-        resource_path=os.path.join(file_path, 'resource')
+        # file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+        resource_path=os.path.join(self.file_path, 'resource')
         icon_path=os.path.join(resource_path, 'icon')
 
         tran_ico=os.path.join(icon_path, 'translation.svg')
@@ -75,7 +76,8 @@ class MainWindow(FramelessWindow):
     def initWindow(self):
         # 设置窗口的大小、标题、图标等属性，并将窗口移动到屏幕中心
         self.resize(self.window_width, self.window_height)
-        resource_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\resource'
+        # resource_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation\\resource'
+        resource_path=os.path.join(self.file_path,'resource')
         logo_path=os.path.join(resource_path, 'logo.ico')
         self.setWindowIcon(QIcon(logo_path))
         self.setWindowTitle('Translation Helper')
@@ -105,8 +107,8 @@ class MainWindow(FramelessWindow):
 
     def setQss(self):
         #设置窗口的样式表
-        file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
-        resource_path=os.path.join(file_path, 'resource')
+        # file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+        resource_path=os.path.join(self.file_path, 'resource')
         demo_path =os.path.join(os.path.join(resource_path, 'qss'),'demo.qss')
         with open(demo_path, encoding='utf-8') as f:
             self.setStyleSheet(f.read())

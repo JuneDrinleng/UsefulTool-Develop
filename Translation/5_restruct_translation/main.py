@@ -1,5 +1,9 @@
 from model import *
 from PyQt5.QtCore import Qt
+
+
+file_path='D:\\GitHubStorage\\UsefulTool-Develop\\Translation\\5_restruct_translation'
+# file_path=os.path.dirname(os.path.abspath(__file__))
 def main():
     system = platform.system()
 
@@ -23,7 +27,7 @@ def main():
         }
         with open(cache_file_path, 'w', encoding='utf-8') as file:
             json.dump(config_data, file, ensure_ascii=False, indent=4)
-    w=MainWindow()
+    w=MainWindow(file_path=file_path)
     w.show()
 
 if __name__ == '__main__':
