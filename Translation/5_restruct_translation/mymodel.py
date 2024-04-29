@@ -119,4 +119,5 @@ def youdao_translator(content,to_language,text_language):
 
 def deepL_translator(content,to_language,text_language):
     result=PyDeepLX.translate(content, text_language, to_language)
+    time.sleep(3)
     return result

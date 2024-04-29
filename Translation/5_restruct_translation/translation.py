@@ -128,6 +128,8 @@ class TranslationWindow(QFrame):
             self.text_language='zh'
         elif self.text_language=='汉语' and self.translate_sever=='有道翻译':
             self.text_language='zh-CHS'
+        elif self.text_language=='汉语' and self.translate_sever=='deepl翻译':
+            self.text_language='zh'
     def get_target_language(self):
         self.target_language=self.comboBox2.currentText()
         if self.target_language=='英语':
@@ -136,8 +138,10 @@ class TranslationWindow(QFrame):
             self.target_language='zh-CN'
         elif self.target_language=='汉语' and self.translate_sever=='百度翻译':
             self.target_language='zh'
-        elif self.text_language=='汉语' and self.translate_sever=='有道翻译':
-            self.text_language='zh-CHS'
+        elif self.target_language=='汉语' and self.translate_sever=='有道翻译':
+            self.target_language='zh-CHS'
+        elif self.target_language=='汉语' and self.translate_sever=='deepl翻译':
+            self.target_language='zh'
     def eventFilter(self, obj, event):
         if obj == self.label_title and event.type() == QEvent.Resize:
             self.update_margins()
@@ -181,16 +185,14 @@ class TranslationWindow(QFrame):
                     self.output_text_browser.setText('')
                 else:
                     # self.output_text_browser.setText(Google_translator(text=text,text_language='zh-CN'))
-                    self.output_text_browser.setText('翻译中，请稍等')
                     self.output_text_browser.setText(Google_translator(text=text,text_language=self.text_language,to_language=self.target_language))
         elif self.translate_sever=='百度翻译':
             self.output_text_browser.setText(Baidu_translator(input_text=text,from_lang=self.text_language,to_lang=self.target_language))
         elif self.translate_sever=='有道翻译':
             self.output_text_browser.setText(youdao_translator(content=text,text_language=self.text_language,to_language=self.target_language))
         elif self.translate_sever=='deepl翻译':
-            self.output_text_browser.setText('翻译中，请稍等')
             self.output_text_browser.setText(deepL_translator(content=text,text_language=self.text_language,to_language=self.target_language))
-            time.sleep(5)
+            
 class myPlainTextEdit(PlainTextEdit):
     enter_pressed = pyqtSignal(str)
     def keyPressEvent(self, event):

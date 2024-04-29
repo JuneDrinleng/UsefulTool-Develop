@@ -1,3 +1,3 @@
 from PyDeepLX import PyDeepLX
 
-print(PyDeepLX.translate("Hello World", "auto", "zh"))
+print(PyDeepLX.translate("Hello World", "en", "zh"))

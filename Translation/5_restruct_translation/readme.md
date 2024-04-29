@@ -11,12 +11,13 @@ resource_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resource
 logo_path=os.path.join(resource_path, 'logo.ico')
 
 谷歌翻译实现参考：https://www.perfcode.com/p/python-calls-google-translate-api.html
+有道翻译实现参考：https://www.jianshu.com/p/08778987a6bf
+deepL翻译实现参考：https://www.cnblogs.com/sunxiuwen/p/17839098.html
 
 打包命令：
+Windows 打包命令：
 pyinstaller -w --add-data "./resource/*:." -i "./resource/logo.ico" -n "Translate Helper" --onefile main.py 
-
-
-
+mac 打包命令
 pyinstaller -w --add-data "./resource/*:." -i "./resource/logo.icns" -n "Translate Helper" --onefile main.py 
 
 ## 2 项目介绍
