@@ -26,11 +26,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller  # 安装 PyInstaller
         pip install transformers -U
+        pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
     - name: Build with PyInstaller
       run: |
         cd ./LM_Qwen
-        pyinstaller  try.py
+        pyinstaller --onefile try.py
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
