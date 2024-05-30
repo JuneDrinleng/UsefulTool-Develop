@@ -12,4 +12,6 @@ def convert_mp4_to_gif_speedup(source_file, target_file, speed_factor):
     video.write_gif(target_file)
     print("GIF文件已写入\n")
 # 使用函数
-convert_mp4_to_gif_speedup('D:\\Lab\\组会\\组会记录\\2024年组会\\20240427组会\\output_label.mp4', 'output.gif',1)
+convert_mp4_to_gif_speedup('Gp_traj_outputs_label_scatter.mp4', 'Gp_traj_outputs_label_scatter.gif',1)
+# convert_mp4_to_gif_speedup('eta_outputs_label_scatter.mp4', 'eta_outputs_label_scatter.gif',1)
+# convert_mp4_to_gif_speedup('etas_outputs_label_scatter.mp4', 'etas_outputs_label_scatter.gif',1)
