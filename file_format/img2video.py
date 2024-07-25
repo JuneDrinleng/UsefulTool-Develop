@@ -34,6 +34,6 @@ def make_video(image_folder, output_video, fps=24):
     final_clip.write_videofile(output_video, codec='libx264')
 
 # 使用函数
-make_video(img_path, output_path, fps=10)
+make_video(img_path, output_path, fps=20)
 # make_video('eta_outputs_label_scatter', 'eta_outputs_label_scatter.mp4', fps=10)
 # make_video('Gp_outputs_label_scatter', 'Gp_outputs_label_scatter.mp4', fps=10)
