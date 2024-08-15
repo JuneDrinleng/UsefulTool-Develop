@@ -28,3 +28,8 @@
     - calculate_result
   - try(测试文件夹，用于存放尝试的代码)
     - try.ipynb
+
+项目打包命令：
+~~~
+pyinstaller --onefile --name program_structV2 --icon=icon.ico program_struct.py
+~~~
