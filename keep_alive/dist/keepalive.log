@@ -1,9 +1,0 @@
-[2025-06-06 00:28:04] Started with 📟 emoji tray icon
-[2025-06-06 00:28:04] Keep-alive success: 200
-[2025-06-06 00:33:01] Started with 📟 emoji tray icon
-[2025-06-06 00:33:01] Keep-alive success: 200
-[2025-06-06 00:36:39] Started with 📟 emoji tray icon
-[2025-06-06 00:36:40] Keep-alive success: 200
-[2025-06-06 00:40:21] Keep-alive success: 200
-[2025-06-06 00:43:21] Keep-alive success: 200
-[2025-06-06 18:58:44] Request failed: HTTPSConnectionPool(host='www.tsinghua.edu.cn', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1006)')))
